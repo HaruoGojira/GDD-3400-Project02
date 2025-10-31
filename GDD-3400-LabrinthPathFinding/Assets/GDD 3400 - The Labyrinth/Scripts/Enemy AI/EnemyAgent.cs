@@ -35,7 +35,8 @@ namespace GDD3400.Labyrinth
         private Vector3 _destinationTarget;
         List<PathNode> _path;
 
-        private Rigidbody _rb;
+        //protected so that child classes can access it, private would prevent that
+        protected Rigidbody _rb;
 
         private LayerMask _wallLayer;
 

@@ -1,0 +1,61 @@
+Labyrinth 2 AI FOR GAMES NOTES
+
+
+Style - 4 enemies like Pacman ghosts. Each with Unique Style
+
+
+1. First Enemy: Sniper
+
+- Will move to a corner of the maze and camp at a certain spot
+- When it spots the player in Raycast line of sight, it shoots him
+- If player doesn't show up within a certain time frame, moves spots until further notice
+- Moves by rotating to another corner of the map
+
+
+Psuedocode:
+
+
+
+
+2. Second Enemy: Tank
+
+- Slowest of the enemies but is the most tankey (might be indestructible)
+- He free roams and is a wander type enemy
+- If spots the player he can chase him until player out of sight at a certain time
+- He is so big the player can't get trapped in a room or else he dies
+
+
+
+Psuedocode:
+
+
+
+
+
+3. Third Enemy: Speedster
+
+- fasted of the enemies but is the weakest
+- He tries to run from the player when he is spotted
+- He can only be beaten by traps and if cornered by the player
+- He free roams until spotted by player and then tries to run to another side of the map
+
+
+
+Psuedocode:
+
+
+
+
+
+4. Fourth Enemy: Hunter
+
+- Medium intelligence as he wanders the map
+- When he spots the player, he will try to run at him
+- He can leave traps depending on where the player went or last saw him
+- Has a medium amount of health and can be killed by traps
+
+
+
+
+
+Psuedocode:
