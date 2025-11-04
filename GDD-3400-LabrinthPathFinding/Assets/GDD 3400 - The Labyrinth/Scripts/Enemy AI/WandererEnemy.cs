@@ -5,17 +5,13 @@ namespace GDD3400.Labyrinth
 {
     public class WandererEnemy : EnemyAgent
     {
-        //important variables
-        private Vector3 _searchPosition;
-        private float _searchTimer;
-        private float _chaseTimer;
-        
         //movement variables
-        [SerializeField] private Transform _player;
+        [SerializeField] private Transform _playerTransform;
         [SerializeField] private float _wanderSpeed = 2.0f;
         [SerializeField] private float _chaseSpeed = 4.0f;
         [SerializeField] private float _detectionRange = 10.0f;
         [SerializeField] private float _wanderRadius = 5.0f;
+        [SerializeField] private float _chaseTimer = 5.0f;
 
 
         //Enum for WandererEnemy states
@@ -36,20 +32,14 @@ namespace GDD3400.Labyrinth
             base.Awake();
 
             //find player transform
-            if (_player == null)
+            if (_playerTransform == null)
             {
                 GameObject playerObject = GameObject.FindWithTag("Player");
                 if (playerObject != null)
                 {
-                    _player = playerObject.transform;
+                    _playerTransform = playerObject.transform;
                 }
             }
-        }
-
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-
         }
 
         // Update is called once per frame
@@ -60,7 +50,9 @@ namespace GDD3400.Labyrinth
             DecisionMaking();
         }
 
-        // FixedUpdate is called at a fixed interval and is independent of frame rate
+        /// <summary>
+        /// FixedUpdate is called at a fixed interval and is independent of frame rate
+        /// </summary>
         void FixedUpdate()
         {
             // Handle movement based on current state
@@ -70,12 +62,12 @@ namespace GDD3400.Labyrinth
                     // Move randomly within wander radius
                     Vector3 wanderDirection = Random.insideUnitSphere * _wanderRadius;
                     wanderDirection.y = 0;
-                    _rb.MovePosition(transform.position + wanderDirection.normalized * _wanderSpeed * Time.fixedDeltaTime);
+                    _rb.MovePosition(transform.position + wanderDirection.normalized * _wanderSpeed);
                     break;
                 case WandererState.Chasing:
                     // Move towards the player
-                    Vector3 chaseDirection = (_player.position - transform.position).normalized;
-                    _rb.MovePosition(transform.position + chaseDirection * _chaseSpeed * Time.fixedDeltaTime);
+                    Vector3 chaseDirection = (_playerTransform.position - transform.position).normalized;
+                    _rb.MovePosition(transform.position + chaseDirection * _chaseSpeed);
                     break;
             }
         }
@@ -83,8 +75,10 @@ namespace GDD3400.Labyrinth
         //helps with enemy perception
         void Perception()
         {
+            if (_playerTransform == null) return;
+
             //if the player is within detection range, start chasing
-            float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
+            float distanceToPlayer = Vector3.Distance(transform.position, _playerTransform.position);
             if (distanceToPlayer <= _detectionRange)
             {
                 //reset chase timer and switch to chasing state
@@ -112,18 +106,20 @@ namespace GDD3400.Labyrinth
             }
         }
 
-        //handles wandering behavior
+        /// <summary>
+        /// handles wandering behavior
+        /// </summary>
         void Wander()
         {
-
-          
             //sets up the wandering state movements
             Vector3 randomDir = Random.insideUnitSphere * _wanderRadius;
             randomDir.y = 0;
             Vector3 wanderTarget = transform.position + randomDir;
         }
 
-        //handles chasing the player
+        /// <summary>
+        /// handles chasing the player
+        /// </summary>
         void ChasePlayer()
         {
             _currentState = WandererState.Wandering;
@@ -149,7 +145,10 @@ namespace GDD3400.Labyrinth
             Gizmos.DrawWireSphere(transform.position, _wanderRadius);
         }
 
-        //funtion to move to a target position
+        /// <summary>
+        /// funtion to move to a target position
+        /// </summary>
+        /// <param name="targetPosition"></param>
         private void MoveToTarget(Vector3 targetPosition)
         {
             Vector3 direction = (targetPosition - transform.position).normalized;

@@ -2,21 +2,20 @@ using UnityEngine;
 
 namespace GDD3400.Labyrinth
 {
-    public class StalkerEnemy : EnemyAgent
+    public class GuardEnemy : EnemyAgent
     {
         //important variables
         private Vector3 _searchPosition;
         private float _searchTimer;
 
         // Define states for the StalkerEnemy
-        private enum StalkerState
+        private enum GuardState
         {
             Wander,
             Idle,
-            Stalking,
             Attacking
         }
-        private StalkerState _currentState;
+        private GuardState _currentState;
 
         /// <summary>
         /// This method is called when the script instance is being loaded
@@ -53,16 +52,13 @@ namespace GDD3400.Labyrinth
         void Perception()
         {
             // Logic for perceiving the player and environment
-            if (_currentState == StalkerState.Idle)
+            if (_currentState == GuardState.Idle)
             {
                 // Logic for detecting the player and transitioning to Stalking state
 
             }
-            else if (_currentState == StalkerState.Stalking)
-            {
-                // Logic for maintaining stalking behavior
-            }
-            else if (_currentState == StalkerState.Attacking)
+            
+            else if (_currentState == GuardState.Attacking)
             {
                 // Logic for attacking behavior
             }
@@ -73,16 +69,13 @@ namespace GDD3400.Labyrinth
         {
             switch (_currentState)
             {
-                case StalkerState.Idle:
+                case GuardState.Idle:
                     Idle();
                     break;
-                case StalkerState.Stalking:
-                    StalkPlayer();
-                    break;
-                case StalkerState.Attacking:
+                case GuardState.Attacking:
                     AttackPlayer();
                     break;
-                case StalkerState.Wander:
+                case GuardState.Wander:
                     Wander();
                     break;
             }
@@ -91,48 +84,30 @@ namespace GDD3400.Labyrinth
         //handles the wandering until it sees the player
         void Wander()
         {
-            if (_currentState == StalkerState.Idle)
+            if (_currentState == GuardState.Idle)
             {
                 //wanders until it sees the player
                 
             }
         }
 
-        //handles stalking the player
-        void StalkPlayer()
-        {
-            if (_currentState == StalkerState.Idle)
-            {
-                // Logic for transitioning to Stalking state
-            }
-            else if (_currentState == StalkerState.Stalking)
-            {
-                // Logic for stalking behavior
-            }
-        }
+       
 
         //handles attacking the player
         void AttackPlayer()
         {
-            if (_currentState == StalkerState.Stalking)
-            {
-                // Logic for transitioning to Attacking state
-            }
-            else if (_currentState == StalkerState.Attacking)
-            {
-                // Logic for attacking behavior
-            }
+            
         }
 
         //handles idle behavior
         void Idle()
         {
-            if (_currentState == StalkerState.Attacking)
+            if (_currentState == GuardState.Attacking)
             {
                 // Logic for transitioning to Idle state
 
             }
-            else if (_currentState == StalkerState.Idle)
+            else if (_currentState == GuardState.Idle)
             {
                 // Logic for idle behavior
             }

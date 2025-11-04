@@ -42,7 +42,7 @@ namespace  GDD3400.Labyrinth
             if (_moveVector.magnitude > 0f) transform.forward = Vector3.Lerp(transform.forward, _moveVector, 0.2f);
 
             // If the dash is available and pressed this frame, perform the dash
-            if (!_isDashing && _dashAction.WasPressedThisFrame()) PerformDash();
+            //if (!_isDashing && _dashAction.WasPressedThisFrame()) PerformDash();
         }
 
         private void FixedUpdate()

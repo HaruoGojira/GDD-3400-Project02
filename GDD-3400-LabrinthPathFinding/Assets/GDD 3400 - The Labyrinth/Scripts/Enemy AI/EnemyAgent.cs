@@ -49,7 +49,7 @@ namespace GDD3400.Labyrinth
             _rb = GetComponent<Rigidbody>();
 
             // Grab and store the wall layer
-            _wallLayer = LayerMask.GetMask("Walls");
+            _wallLayer = LayerMask.GetMask("Wall");
         }
 
         public void Start()

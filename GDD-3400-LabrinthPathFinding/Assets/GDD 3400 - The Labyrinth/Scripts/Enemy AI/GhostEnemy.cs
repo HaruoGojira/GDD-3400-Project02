@@ -5,23 +5,9 @@ namespace GDD3400.Labyrinth
     public class GhostEnemy : EnemyAgent
     {
         //important variables
-        private Vector3 _searchPosition;
-        private float _searchTimer;
-
-        //movement variables
         [SerializeField] private Transform _playerTransform;
-        [SerializeField] private float _phaseDuration = 3f;
         [SerializeField] private float _moveSpeed = 4f;
-        [SerializeField] private float _detectionRange = 15f;
-
-        //Enum for GhostEnemy states
-        private enum GhostState
-        {
-            Phasing,
-            Chasing,
-            Wandering
-        }
-        private GhostState _currentState;
+        private Vector3 _lookDirection;
 
         /// <summary>
         /// This method is called when the script instance is being loaded
@@ -29,83 +15,52 @@ namespace GDD3400.Labyrinth
         public void Awake()
         {
             //inherits the Rigidbody from EnemyAgent otherwise it would override it
-            base.Awake();
-        }
+            if (_rb == null)
+            {
+                _rb = GetComponent<Rigidbody>();
+            }
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-
+            //use a ghost layer to ignore walls
+            int ghostLayer = LayerMask.NameToLayer("Ghost");
+            int wallLayer = LayerMask.NameToLayer("Wall");
+            Physics.IgnoreLayerCollision(ghostLayer, wallLayer, true);
         }
 
         // Update is called once per frame
         void Update()
         {
-            //Update perception and decision making each frame
-            Perception();
-            DecisionMaking();
-        }
+            // the ghosts will always float toward the player
+            if (_playerTransform == null) return;
 
-        // FixedUpdate is called at a fixed interval and is independent of frame rate
-        void FixedUpdate()
-        {
+            //the ghost will move toward the player
+            Vector3 directionToPlayer = (_playerTransform.position - transform.position).normalized;
+            Vector3 movement = directionToPlayer * _moveSpeed * Time.deltaTime;
+            _rb.MovePosition(_rb.position + movement);
+
+            // Calculate the look direction on the horizontal plane
+            _lookDirection = new Vector3(directionToPlayer.x, 0, directionToPlayer.z);
             
+
+            // Face the ghost toward the player
+            if (_lookDirection != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(_lookDirection);
+                _rb.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, 5f));
+            }
+
         }
 
-        //helps with enemy perception
-        void Perception()
+        ///collision if the ghost touches the player
+        private void OnCollisionEnter(Collision collision)
         {
-            //if the ghost is close enough to the player, start chasing
-            float distanceToPlayer = Vector3.Distance(transform.position, _playerTransform.position);
-            if (distanceToPlayer <= _detectionRange)
+            // Check if the collided object is the player
+            if (collision.gameObject.CompareTag("Player"))
             {
-                _currentState = GhostState.Chasing;
-            }
-            else
-            {
-                _currentState = GhostState.Wandering;
-            }
-        }
-
-        //helps with decision making
-        void DecisionMaking()
-        {
-            if (_currentState == GhostState.Phasing)
-            {
-                PhaseThroughWalls();
-            }
-            else if (_currentState == GhostState.Chasing)
-            {
-                ChasePlayer();
-            }
-            else if (_currentState == GhostState.Wandering)
-            {
-                Wander();
-            }
-        }
-
-        //allows the ghost to phase through walls
-        void PhaseThroughWalls()
-        {
-            // Implementation for phasing through walls
-            if (_currentState != GhostState.Phasing)
-            {
-                _currentState = GhostState.Phasing;
-                // Start phasing logic here
+                //ends the game
+                Debug.Log("Ghost touched the player! Game Over.");
 
             }
         }
 
-        //handles chasing the player
-        void ChasePlayer()
-        {
-
-        }
-
-        //handles wandering behavior
-        void Wander()
-        {
-
-        }
     }
 }
