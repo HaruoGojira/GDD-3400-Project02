@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace GDD3400.Labyrinth
 {
@@ -6,7 +7,7 @@ namespace GDD3400.Labyrinth
     {
         //important variables
         [SerializeField] private Transform _playerTransform;
-        [SerializeField] private float _moveSpeed = 4f;
+        [SerializeField] private float _moveSpeed = 6f;
         private Vector3 _lookDirection;
 
         /// <summary>
@@ -20,7 +21,7 @@ namespace GDD3400.Labyrinth
                 _rb = GetComponent<Rigidbody>();
             }
 
-            //use a ghost layer to ignore walls
+            //use a ghost layer to ignore wall layer collisions
             int ghostLayer = LayerMask.NameToLayer("Ghost");
             int wallLayer = LayerMask.NameToLayer("Wall");
             Physics.IgnoreLayerCollision(ghostLayer, wallLayer, true);
@@ -33,14 +34,13 @@ namespace GDD3400.Labyrinth
             if (_playerTransform == null) return;
 
             //the ghost will move toward the player
-            Vector3 directionToPlayer = (_playerTransform.position - transform.position).normalized;
-            Vector3 movement = directionToPlayer * _moveSpeed * Time.deltaTime;
-            _rb.MovePosition(_rb.position + movement);
+            Vector3 _directionToPlayer = (_playerTransform.position - transform.position).normalized;
+            Vector3 _movement = _directionToPlayer * _moveSpeed * Time.deltaTime;
+            _rb.MovePosition(_rb.position + _movement);
 
             // Calculate the look direction on the horizontal plane
-            _lookDirection = new Vector3(directionToPlayer.x, 0, directionToPlayer.z);
+            _lookDirection = new Vector3(_directionToPlayer.x, 0, _directionToPlayer.z);
             
-
             // Face the ghost toward the player
             if (_lookDirection != Vector3.zero)
             {
@@ -50,7 +50,10 @@ namespace GDD3400.Labyrinth
 
         }
 
-        ///collision if the ghost touches the player
+        /// <summary>
+        /// collision if the ghost touches the player
+        /// </summary>
+        /// <param name="collision"></param>
         private void OnCollisionEnter(Collision collision)
         {
             // Check if the collided object is the player

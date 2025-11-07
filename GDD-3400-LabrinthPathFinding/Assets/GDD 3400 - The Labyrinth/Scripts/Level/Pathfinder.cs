@@ -41,6 +41,7 @@ namespace GDD3400.Labyrinth
                 openSet.Remove(current);
                 closeSet.Add(current);
 
+                //Look at each of the current node's neighbors
                 foreach (var connection in current.Connections)
                 {
                     PathNode neighbor = connection.Key;

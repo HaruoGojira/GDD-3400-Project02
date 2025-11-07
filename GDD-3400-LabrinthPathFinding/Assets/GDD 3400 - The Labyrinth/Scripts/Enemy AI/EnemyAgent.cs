@@ -8,7 +8,7 @@ namespace GDD3400.Labyrinth
     [RequireComponent(typeof(Rigidbody))]
     public class EnemyAgent : MonoBehaviour
     {
-        [SerializeField] private LevelManager _levelManager;
+        [SerializeField] protected LevelManager _levelManager;
 
         private bool _isActive = true;
         public bool IsActive
@@ -16,11 +16,11 @@ namespace GDD3400.Labyrinth
             get => _isActive;
             set => _isActive = value;
         }
-        [SerializeField] private float _TurnRate = 10f;
+        [SerializeField] protected float _TurnRate = 10f;
         [SerializeField] private float _MaxSpeed = 5f;
         [SerializeField] private float _SightDistance = 25f;
 
-        [SerializeField] private float _StoppingDistance = 1.5f;
+        [SerializeField] protected float _StoppingDistance = 1.5f;
         
         [Tooltip("The distance to the destination before we start leaving the path")]
         [SerializeField] private float _LeavingPathDistance = 2f; // This should not be less than 1
@@ -31,7 +31,7 @@ namespace GDD3400.Labyrinth
        
 
         private Vector3 _velocity;
-        private Vector3 _floatingTarget;
+        protected Vector3 _floatingTarget;
         private Vector3 _destinationTarget;
         List<PathNode> _path;
 
@@ -160,40 +160,40 @@ namespace GDD3400.Labyrinth
         #endregion
 
         #region Action
-        private void FixedUpdate()
-        {
-            if (!_isActive) return;
+        //private void FixedUpdate()
+        //{
+        //    if (!_isActive) return;
 
 
-            Debug.DrawLine(this.transform.position, _floatingTarget, Color.green);
+        //    Debug.DrawLine(this.transform.position, _floatingTarget, Color.green);
 
-            // If we have a floating target and we are not close enough to it, move towards it
-            if (_floatingTarget != Vector3.zero && Vector3.Distance(transform.position, _floatingTarget) > _StoppingDistance)
-            {
-                // Calculate the direction to the target position
-                Vector3 direction = (_floatingTarget - transform.position).normalized;
+        //    // If we have a floating target and we are not close enough to it, move towards it
+        //    if (_floatingTarget != Vector3.zero && Vector3.Distance(transform.position, _floatingTarget) > _StoppingDistance)
+        //    {
+        //        // Calculate the direction to the target position
+        //        Vector3 direction = (_floatingTarget - transform.position).normalized;
 
-                // Calculate the movement vector
-                _velocity = direction * _MaxSpeed;                
-            }
+        //        // Calculate the movement vector
+        //        _velocity = direction * _MaxSpeed;                
+        //    }
 
-            // If we are close enough to the floating target, slow down
-            else
-            {
-                _velocity *= .95f;
-            }
+        //    // If we are close enough to the floating target, slow down
+        //    else
+        //    {
+        //        _velocity *= .95f;
+        //    }
 
-            // Calculate the desired rotation towards the movement vector
-            if (_velocity != Vector3.zero)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(_velocity);
+        //    // Calculate the desired rotation towards the movement vector
+        //    if (_velocity != Vector3.zero)
+        //    {
+        //        Quaternion targetRotation = Quaternion.LookRotation(_velocity);
 
-                // Smoothly rotate towards the target rotation based on the turn rate
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _TurnRate);
-            }
+        //        // Smoothly rotate towards the target rotation based on the turn rate
+        //        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _TurnRate);
+        //    }
 
-            _rb.linearVelocity = _velocity;
-        }
+        //    _rb.linearVelocity = _velocity;
+        //}
         #endregion
 
         private IEnumerator DrawPathDebugLines(List<PathNode> path)
