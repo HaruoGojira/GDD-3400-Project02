@@ -13,6 +13,7 @@ namespace GDD3400.Labyrinth
         [SerializeField] private float _chaseSpeed = 5f;
         [SerializeField] private float _detectionRange = 15f;
         [SerializeField] private float _wanderRadius = 7f;
+
         [SerializeField] private float _currentSpeed;
         [SerializeField] private Vector3 _currentVelocity;
         [SerializeField] private float _distanceToThreshold = 1f;
@@ -311,6 +312,5 @@ namespace GDD3400.Labyrinth
         #endregion
 
     }
-
 
 }
