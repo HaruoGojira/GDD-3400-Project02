@@ -288,7 +288,7 @@ MonoBehaviour:
   _MinimumPathDistance: 6
   _playerTransform: {fileID: 971792097}
   _wanderSpeed: 2
-  _chaseSpeed: 6
+  _chaseSpeed: 5
   _detectionRange: 15
   _wanderRadius: 15
   _currentSpeed: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
   _MinimumPathDistance: 6
   _playerTransform: {fileID: 971792097}
   _wanderSpeed: 2
-  _chaseSpeed: 6
+  _chaseSpeed: 5
   _detectionRange: 15
   _wanderRadius: 15
   _currentSpeed: 0
@@ -815,7 +815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.1
+      value: 38.9
       objectReference: {fileID: 0}
     - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -823,7 +823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -33
+      value: 22.4
       objectReference: {fileID: 0}
     - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -888,7 +888,7 @@ MonoBehaviour:
   _MinimumPathDistance: 6
   _playerTransform: {fileID: 971792097}
   _wanderSpeed: 2
-  _chaseSpeed: 6
+  _chaseSpeed: 5
   _detectionRange: 15
   _wanderRadius: 15
   _currentSpeed: 0
@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GDD3400.Labyrinth.StalkerEnemy
   _levelManager: {fileID: 1086999212}
   _TurnRate: 10
-  _MaxSpeed: 5
+  _MaxSpeed: 4
   _SightDistance: 25
   _StoppingDistance: 1.5
   _LeavingPathDistance: 2
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   _playerTransform: {fileID: 971792097}
   _moveSpeed: 5
   _detectionRange: 12
-  _returnSpeed: 3
+  _returnSpeed: 2
 --- !u!1001 &329648447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3312,7 +3312,7 @@ MonoBehaviour:
   _MinimumPathDistance: 6
   _playerTransform: {fileID: 971792097}
   _wanderSpeed: 2
-  _chaseSpeed: 6
+  _chaseSpeed: 5
   _detectionRange: 15
   _wanderRadius: 15
   _currentSpeed: 0
@@ -3728,7 +3728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GDD3400.Labyrinth.StalkerEnemy
   _levelManager: {fileID: 1086999212}
   _TurnRate: 10
-  _MaxSpeed: 5
+  _MaxSpeed: 4
   _SightDistance: 25
   _StoppingDistance: 1.5
   _LeavingPathDistance: 2
@@ -3736,7 +3736,7 @@ MonoBehaviour:
   _playerTransform: {fileID: 971792097}
   _moveSpeed: 5
   _detectionRange: 12
-  _returnSpeed: 3
+  _returnSpeed: 2
 --- !u!1001 &586301312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6937,7 +6937,7 @@ MonoBehaviour:
   _MinimumPathDistance: 6
   _playerTransform: {fileID: 971792097}
   _wanderSpeed: 2
-  _chaseSpeed: 6
+  _chaseSpeed: 5
   _detectionRange: 15
   _wanderRadius: 15
   _currentSpeed: 0
@@ -7237,7 +7237,7 @@ MonoBehaviour:
   _MinimumPathDistance: 6
   _playerTransform: {fileID: 971792097}
   _wanderSpeed: 2
-  _chaseSpeed: 6
+  _chaseSpeed: 5
   _detectionRange: 15
   _wanderRadius: 15
   _currentSpeed: 0
@@ -7853,7 +7853,7 @@ MonoBehaviour:
   _MinimumPathDistance: 6
   _playerTransform: {fileID: 971792097}
   _wanderSpeed: 2
-  _chaseSpeed: 6
+  _chaseSpeed: 5
   _detectionRange: 15
   _wanderRadius: 15
   _currentSpeed: 0
@@ -8142,7 +8142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GDD3400.Labyrinth.StalkerEnemy
   _levelManager: {fileID: 1086999212}
   _TurnRate: 10
-  _MaxSpeed: 5
+  _MaxSpeed: 4
   _SightDistance: 25
   _StoppingDistance: 1.5
   _LeavingPathDistance: 2
@@ -8150,7 +8150,7 @@ MonoBehaviour:
   _playerTransform: {fileID: 971792097}
   _moveSpeed: 5
   _detectionRange: 12
-  _returnSpeed: 3
+  _returnSpeed: 2
 --- !u!4 &1351323808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4834609997738129301, guid: 21393b7222138467d8fe219e2d7b6ae6, type: 3}
@@ -8382,7 +8382,7 @@ MonoBehaviour:
   _MinimumPathDistance: 6
   _playerTransform: {fileID: 971792097}
   _wanderSpeed: 2
-  _chaseSpeed: 6
+  _chaseSpeed: 5
   _detectionRange: 15
   _wanderRadius: 15
   _currentSpeed: 0
@@ -9720,7 +9720,7 @@ MonoBehaviour:
   _MinimumPathDistance: 6
   _playerTransform: {fileID: 971792097}
   _wanderSpeed: 2
-  _chaseSpeed: 6
+  _chaseSpeed: 5
   _detectionRange: 15
   _wanderRadius: 15
   _currentSpeed: 0
@@ -9958,7 +9958,7 @@ MonoBehaviour:
   _MinimumPathDistance: 6
   _playerTransform: {fileID: 971792097}
   _wanderSpeed: 2
-  _chaseSpeed: 6
+  _chaseSpeed: 5
   _detectionRange: 15
   _wanderRadius: 15
   _currentSpeed: 0
@@ -11272,120 +11272,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 832037916033697066, guid: 72b21f59e402c41e9878633886dfd34b, type: 3}
   m_PrefabInstance: {fileID: 1883881423}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1887342725
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3555295418026724885, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: _levelManager
-      value: 
-      objectReference: {fileID: 1086999212}
-    - target: {fileID: 3753460845270247362, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2e7f9a50de0bde243a578e43c5840cb3, type: 2}
-    - target: {fileID: 4435067702615961087, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2e7f9a50de0bde243a578e43c5840cb3, type: 2}
-    - target: {fileID: 6942046151403193595, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_Name
-      value: ' Wanderer Enemy'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6942046151403193595, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6942046151403193595, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 37.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 75.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066450295968295882, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3555295418026724885, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6942046151403193595, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1887342727}
-  m_SourcePrefab: {fileID: 100100000, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
---- !u!1 &1887342726 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6942046151403193595, guid: 8112c2beccc3b461cb4e8252dcd040fb, type: 3}
-  m_PrefabInstance: {fileID: 1887342725}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1887342727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887342726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 456ac5cc0ddac9a4ba3a2b51e8e773d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GDD3400.Labyrinth.WandererEnemy
-  _levelManager: {fileID: 1086999212}
-  _TurnRate: 10
-  _MaxSpeed: 5
-  _SightDistance: 25
-  _StoppingDistance: 1.5
-  _LeavingPathDistance: 2
-  _MinimumPathDistance: 6
-  _playerTransform: {fileID: 971792097}
-  _wanderSpeed: 2
-  _chaseSpeed: 6
-  _detectionRange: 14
-  _wanderRadius: 14
-  _currentSpeed: 0
-  _currentVelocity: {x: 0, y: 0, z: 0}
-  _distanceToThreshold: 1
-  _chaseTimer: 5
 --- !u!1 &1893448485
 GameObject:
   m_ObjectHideFlags: 0
@@ -11575,7 +11461,7 @@ MonoBehaviour:
   _LeavingPathDistance: 2
   _MinimumPathDistance: 6
   _playerTransform: {fileID: 971792097}
-  _moveSpeed: 3
+  _moveSpeed: 2
 --- !u!1001 &1907167767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12836,7 +12722,6 @@ SceneRoots:
   - {fileID: 1488822711}
   - {fileID: 740574796}
   - {fileID: 1893448488}
-  - {fileID: 1887342725}
   - {fileID: 1261475605}
   - {fileID: 1600567441}
   - {fileID: 1631752369}
