@@ -8,7 +8,7 @@ namespace GDD3400.Labyrinth
         //important variables
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private float _moveSpeed = 4f;
-        [SerializeField] private float _detectionRange = 12f;
+        [SerializeField] private float _detectionRange = 13f;
         [SerializeField] private float _returnSpeed = 2f;
         
         //This helps to set up the guard's post
@@ -16,7 +16,6 @@ namespace GDD3400.Labyrinth
         private float _searchTimer;
         private Vector3 _lookDirection;
         
-
         // Define states for the GuardEnemy
         private enum GuardState
         {
@@ -40,7 +39,6 @@ namespace GDD3400.Labyrinth
             //this will initialize the guard's post
             _guardPost = transform.position;
             _currentState = GuardState.Idle;
-            
         }
 
         /// <summary>
@@ -93,6 +91,7 @@ namespace GDD3400.Labyrinth
 
         }
 
+        #region Perception and Decision Making
         /// <summary>
         /// helps with enemy perception
         /// </summary>
@@ -133,7 +132,9 @@ namespace GDD3400.Labyrinth
                     break;
             }
         }
+        #endregion
 
+        #region Guard States
         /// <summary>
         /// handles attacking the player and will return to idle if the player is lost
         /// </summary>
@@ -160,7 +161,6 @@ namespace GDD3400.Labyrinth
         {
             // guard doens't move in idle state
             _rb.velocity = Vector3.zero;
-
         }
 
         /// <summary>
@@ -176,7 +176,9 @@ namespace GDD3400.Labyrinth
                 _currentState = GuardState.Idle;
             }
         }
+        #endregion
 
+        #region Gizmos and Collision
         /// <summary>
         /// Draws gizmos to visualize detection range in the editor
         /// </summary>
@@ -185,6 +187,12 @@ namespace GDD3400.Labyrinth
             // Draw detection range sphere
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, _detectionRange);
+            // Draw attack state color
+            if (_currentState == GuardState.Attacking)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawWireSphere(transform.position, _detectionRange);
+            }
         }
 
         /// <summary>
@@ -200,6 +208,25 @@ namespace GDD3400.Labyrinth
                 Debug.Log("Guard touched the player! Game Over.");
             }
         }
+
+        /// <summary>
+        /// if guard collides with a wall, push it slightly away
+        /// </summary>
+        /// <param name="collision"></param>
+        private void OnCollisionStay(Collision collision)
+        {
+            //if the guard collides with a wall, push it slightly away
+            if (_currentState == GuardState.Return && collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+            {
+                // Calculate push direction away from the wall
+                Vector3 _pushDirection = collision.contacts[0].normal;
+
+                // Keep the push direction horizontal
+                float _pushStrength = 3f;
+                _rb.MovePosition(_rb.position + _pushDirection.normalized * _pushStrength * Time.fixedDeltaTime);
+            }
+        }
+        #endregion
 
     }
 }

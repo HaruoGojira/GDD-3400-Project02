@@ -7,7 +7,9 @@ namespace GDD3400.Labyrinth
     {
         //important variables
         [SerializeField] private Transform _playerTransform;
-        [SerializeField] private float _moveSpeed = 6f;
+
+        //movement variables for ghost
+        [SerializeField] private float _moveSpeed = 1f;
         private Vector3 _lookDirection;
 
         /// <summary>
@@ -21,14 +23,19 @@ namespace GDD3400.Labyrinth
                 _rb = GetComponent<Rigidbody>();
             }
 
-            //use a ghost layer to ignore wall layer collisions
+            //use a ghost layer to ignore wall and enemy layer collisions
             int ghostLayer = LayerMask.NameToLayer("Ghost");
             int wallLayer = LayerMask.NameToLayer("Wall");
+            int enemyLayer = LayerMask.NameToLayer("Enemies");
+
             Physics.IgnoreLayerCollision(ghostLayer, wallLayer, true);
+            Physics.IgnoreLayerCollision(ghostLayer, enemyLayer, true);
         }
 
-        // Update is called once per frame
-        void Update()
+        /// <summary>
+        /// FixedUpdate is called at a fixed interval and is independent of frame rate
+        /// </summary>
+        void FixedUpdate()
         {
             // the ghosts will always float toward the player
             if (_playerTransform == null) return;
@@ -44,8 +51,8 @@ namespace GDD3400.Labyrinth
             // Face the ghost toward the player
             if (_lookDirection != Vector3.zero)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(_lookDirection);
-                _rb.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, 5f));
+                Quaternion _targetRotation = Quaternion.LookRotation(_lookDirection);
+                _rb.MoveRotation(Quaternion.Slerp(transform.rotation, _targetRotation, 5f * Time.deltaTime));
             }
 
         }

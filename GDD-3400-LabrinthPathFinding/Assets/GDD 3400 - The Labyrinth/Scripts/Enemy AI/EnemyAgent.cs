@@ -20,7 +20,7 @@ namespace GDD3400.Labyrinth
         [SerializeField] private float _MaxSpeed = 5f;
         [SerializeField] private float _SightDistance = 25f;
 
-        [SerializeField] protected float _StoppingDistance = 1.5f;
+        [SerializeField] protected float _StoppingDistance = 1f;
         
         [Tooltip("The distance to the destination before we start leaving the path")]
         [SerializeField] private float _LeavingPathDistance = 2f; // This should not be less than 1

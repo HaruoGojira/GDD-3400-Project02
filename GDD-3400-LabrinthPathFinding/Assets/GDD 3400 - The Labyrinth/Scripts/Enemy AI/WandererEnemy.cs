@@ -1,23 +1,26 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-
 namespace GDD3400.Labyrinth
 {
     public class WandererEnemy : EnemyAgent
     {
-        //movement variables
+        //important variables
         [SerializeField] private Transform _playerTransform;
+
+        //movement variables
         [SerializeField] private float _wanderSpeed = 2f;
-        [SerializeField] private float _chaseSpeed = 4f;
+        [SerializeField] private float _chaseSpeed = 5f;
         [SerializeField] private float _detectionRange = 15f;
-        [SerializeField] private float _wanderRadius = 5f;
-        [SerializeField] private float _chaseTimer = 5f;
+        [SerializeField] private float _wanderRadius = 7f;
         [SerializeField] private float _currentSpeed;
         [SerializeField] private Vector3 _currentVelocity;
         [SerializeField] private float _distanceToThreshold = 1f;
-        private float _chaseTimeRemaining;
         private Vector3 _lookDirection;
+
+        //timer variables
+        [SerializeField] private float _chaseTimer = 5f;
+        private float _chaseTimeRemaining;
 
         //Path Node variables
         private PathNode _currentNode;
@@ -124,7 +127,7 @@ namespace GDD3400.Labyrinth
                 // reset chase timer
                 _chaseTimeRemaining = _chaseTimer;
             }
-            else if (_currentState == WandererState.Chasing && _chaseTimer < 0)
+            else if (_currentState == WandererState.Chasing && _chaseTimeRemaining <= 0)
             {
                 // If the player is out of range go back to wandering
                 _currentState = WandererState.Wandering;
@@ -132,6 +135,7 @@ namespace GDD3400.Labyrinth
                 // reset target node to pick a new one
                 _targetNode = null;
                 _currentNode = null;
+                _currentNode = _levelManager.GetNode(transform.position);
                 PathNodeSelection();
 
                 Debug.Log("WandererEnemy lost sight of the player, returning to wandering.");
@@ -169,9 +173,13 @@ namespace GDD3400.Labyrinth
             Debug.Log(_targetNode);
             if (_targetNode == null)
             {
+                
                 PathNodeSelection();
                 return;
             }
+
+            // Set the target position to the target node's position
+            //_floatingTarget = _targetNode.transform.position;
 
             // Move toward the target node
             //Vector3 _directionToTarget = (_targetPosition - transform.position).normalized;
@@ -261,6 +269,7 @@ namespace GDD3400.Labyrinth
 
             //pick a random node from the connected nodes
             _targetNode = connectedNodes[Random.Range(0, connectedNodes.Count)];
+            
 
             Debug.Log($"WandererEnemy selected new target node at {_targetNode.transform.position}");
         }
@@ -296,7 +305,7 @@ namespace GDD3400.Labyrinth
             if (collision.gameObject.CompareTag("Player"))
             {
                 // Implement logic for when the WandererEnemy collides with the player
-                Debug.Log("WandererEnemy has collided with the Player!");
+                Debug.Log("WandererEnemy has collided with the Player! Game Over.");
             }
         }
         #endregion
